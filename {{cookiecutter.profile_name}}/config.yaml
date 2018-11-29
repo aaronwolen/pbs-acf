@@ -1,6 +1,6 @@
-cluster: "pbs-submit.py --depend \"{dependencies}\""
-cluster-status: "pbs-status.py"
-jobscript: "pbs-jobscript.sh"
+cluster: "moab-submit.py --depend \"{dependencies}\""
+cluster-status: "moab-status.py"
+jobscript: "moab-jobscript.sh"
 jobs: 5000
 immediate-submit: {{cookiecutter.immediate_submit}}
 verbose: true

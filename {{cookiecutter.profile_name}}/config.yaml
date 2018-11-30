@@ -2,6 +2,9 @@ cluster: "moab-submit.py --depend \"{dependencies}\""
 cluster-status: "moab-status.py"
 jobscript: "moab-jobscript.sh"
 jobs: 5000
+max-jobs-per-second: 1
+max-status-checks-per-second: 10
+restart-times: 5
 immediate-submit: {{cookiecutter.immediate_submit}}
 verbose: true
 notemp: true

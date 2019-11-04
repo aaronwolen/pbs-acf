@@ -2,7 +2,9 @@
 
 This repo contains a [Snakemake profile][1] for executing workflows on the [Advanced Computing Facility (ACF)][2] HPC, hosted by Oak Ridge National Laboratory. The PBS system used by ACF is [Torque][3]. However, job scheduling is handled by [Moab][4].
 
-This profile is an amalgmation of the original [pbs-torque][5] profile and @warrenmcg's [moab fork][6]. It provides a few extra configurable variables, documented below.
+This profile is an amalgmation of the original [pbs-torque][5] profile and @warrenmcg's [moab fork][6].
+
+**NOTE:** This profile is a work in progress, YMMV. Please let me know if you have any suggestions for improving it.
 
 ## Setup
 

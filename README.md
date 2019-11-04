@@ -1,18 +1,8 @@
-# Moab
+# ACF Snakemake Profile
 
-This profile configures Snakemake to run on the commerical [Moab HPC Scheduler](http://www.adaptivecomputing.com/moab-hpc-basic-edition/). This
-product can be configured to use multiple resource managers, including PBS/TORQUE (for supported managers, see
-[here](http://docs.adaptivecomputing.com/mwm/7-2-9/Content/topics/resourceManagers/rmconfiguration.html#types)). This product is in use at
-major companies and academic institutions, including my home institution.
+This repo contains a [Snakemake profile][1] for executing workflows on the [Advanced Computing Facility (ACF)][2] HPC, hosted by Oak Ridge National Laboratory. The PBS system used by ACF is [Torque][3]. However, job scheduling is handled by [Moab][4].
 
-Moab uses [`msub`](http://docs.adaptivecomputing.com/maui/commands/msub.php) as the main program to submit jobs,
-and it uses [`showq`](http://docs.adaptivecomputing.com/maui/commands/showq.php),
-[`checkjob`](http://docs.adaptivecomputing.com/maui/commands/checkjob.php) or
-[`mdiag -j`](http://docs.adaptivecomputing.com/maui/commands/mdiag-jobs.php) to monitor jobs in progress.
-
-This profile borrowed heavily from the PBS/TORQUE profile found [here](https://github.com/Snakemake-Profiles/pbs-torque).
-
-**NOTE**: I am a neophyte when it comes to this topic, so please provide feedback on ways this can be improved!
+This profile is an amalgmation of the original [pbs-torque][5] profile and @warrenmcg's [moab fork][6]. It provides a few extra configurable variables, documented below.
 
 ## Setup
 
@@ -22,20 +12,28 @@ To deploy this profile, run
 
     mkdir -p ~/.config/snakemake
     cd ~/.config/snakemake
-    cookiecutter https://github.com/warrenmcg/moab.git
+    cookiecutter https://github.com/aaronwolen/pbs-acf.git
 
 Then, you can run Snakemake with
 
-    snakemake --profile moab ...
+    snakemake --profile pbs-acf ...
 
 
 ### Parameters
 
-The following resources are supported by on a per-rule basis:
+The following resources are supported on a per-rule basis:
 
-+ **node** - set the node resource request (integer; defaults to 1).
-+ **mem_mb** - set the memory resource request (integer in MB units).
-+ **walltime_min** - set the walltime resource (integer in minutes).
+- **node** - set the node resource request (integer; defaults to 1).
+- **mem_mb** - set the memory resource request (integer in MB units).
+- **walltime_min** - set the walltime resource (integer in minutes).
 
 **Note**: The [`threads`](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads)
 directive maps to the "ppn" resource request.
+
+<!-- links -->
+[1]: https://snakemake.readthedocs.io/en/stable/executable.html#profiles
+[2]: https://www.jics.utk.edu/acf
+[3]: https://www.adaptivecomputing.com/products/torque/
+[4]: https://www.adaptivecomputing.com/moab-hpc-basic-edition/
+[5]: https://github.com/Snakemake-Profiles/pbs-torque
+[6]: https://github.com/warrenmcg/moab

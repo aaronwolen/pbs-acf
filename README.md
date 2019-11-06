@@ -1,12 +1,31 @@
 # ACF Snakemake Profile
 
-This repo contains a [Snakemake profile][1] for executing workflows on the [Advanced Computing Facility (ACF)][2] HPC, hosted by Oak Ridge National Laboratory. The PBS system used by ACF is [Torque][3]. However, job scheduling is handled by [Moab][4].
+This repo contains a [Snakemake profile][1] for executing workflows on the [Advanced Computing Facility (ACF)][2] HPC, hosted by Oak Ridge National Laboratory. The profile is an amalgmation of the original [pbs-torque][5] profile and @warrenmcg's [moab fork][6] to accomodate the ACF, which uses both [Torque][3] and [Moab][4] (for job scheduling). 
 
-This profile is an amalgmation of the original [pbs-torque][5] profile and @warrenmcg's [moab fork][6].
+**NOTE:** This is very much a work in progress as I work out the optimal approach for using conda environments and Snakemake on the ACF, so YMMV. That said, please let me know if you have any suggestions for improving it.
 
-**NOTE:** This profile is a work in progress, YMMV. Please let me know if you have any suggestions for improving it.
+## Details
+
+A few notes about changes I've made.
+
+### `config.yaml`
+
+* Passes the following environment variables to `qsub`'s `variable_list` argument: `PATH`, `LOADEDMODULES`, and `_LMFILES_`. This enables modules loaded in your interactive session to be available within PBS jobs.
+
+### `pbs-status.py`
+
+* `qstat`'s output is now converted to a python `dict` instead of attempting XML parsing. 
+
+### Template variables
+
+- **profile_name**: Specifies the [account][acf-job-opts] to which the job will be charged. If omitted `qsub` throws a warning 
 
 ## Setup
+
+In order to use `conda` with this profile you need to activate the module and initialize it by adding the following to `.bashrc`:
+
+    module load python3/conda3-4.4.0
+    . /sw/acf/anaconda3/4.4.0/centos7.3_gnu6.3.0/   anaconda3-4.4.0/etc/profile.d/conda.sh
 
 ### Deploy profile
 
@@ -39,3 +58,4 @@ directive maps to the "ppn" resource request.
 [4]: https://www.adaptivecomputing.com/moab-hpc-basic-edition/
 [5]: https://github.com/Snakemake-Profiles/pbs-torque
 [6]: https://github.com/warrenmcg/moab
+[acf-job-opts]: https://www.nics.utk.edu/computing-resources/acf/running-jobs#options

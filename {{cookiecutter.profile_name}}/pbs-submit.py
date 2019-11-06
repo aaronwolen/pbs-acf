@@ -138,7 +138,7 @@ if walltime and (nodes or mem): resourceparams = resourceparams + ","
 if walltime: resourceparams = resourceparams + walltime
 if nodes or mem or walltime: resourceparams = resourceparams + "\""
 
-cmd = "msub {a}{A}{c}{C}{d}{e}{E}{h}{j}{k}{l}{m}{M}{N}{o}{p}{q}{r}{S}{u}{v}{V}{W}{z}{rp}{dep}{ex}".format(\
+cmd = "qsub {a}{A}{c}{C}{d}{e}{E}{h}{j}{k}{l}{m}{M}{N}{o}{p}{q}{r}{S}{u}{v}{V}{W}{z}{rp}{dep}{ex}".format(\
 	a=atime,A=acc_string,c=chkpt,C=pref,d=dd,e=se,E=me,h=hold,j=j,k=k,l=resource,m=mail,M=mailuser,\
 	N=jname,o=so,p=priority,q=q,r=r,S=sp,u=user,v=ev,V=eall,W=add,z=quiet,rp=resourceparams,dep=depend,ex=extras)
 

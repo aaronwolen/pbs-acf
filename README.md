@@ -11,6 +11,7 @@ A few notes about changes I've made.
 ### `config.yaml`
 
 * Passes the following environment variables to `qsub`'s `variable_list` argument: `PATH`, `LOADEDMODULES`, and `_LMFILES_`. This enables modules loaded in your interactive session to be available within PBS jobs.
+* Scripts specified by the `cluster`, `cluster-status`, and `jobscript` variables are prefixed with `profile_name` because I'm assuming the profile will be installed within a project's working directory.
 
 ### `pbs-status.py`
 
@@ -29,11 +30,9 @@ In order to use `conda` with this profile you need to activate the module and in
 
 ### Deploy profile
 
-To deploy this profile, run
+To deploy this profile change to the project directory containing your Snakefile and run:
 
-    mkdir -p ~/.config/snakemake
-    cd ~/.config/snakemake
-    cookiecutter https://github.com/aaronwolen/pbs-acf.git
+    cookiecutter gh:aaronwolen/pbs-acf
 
 Then, you can run Snakemake with
 

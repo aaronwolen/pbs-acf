@@ -1,9 +1,9 @@
-cluster: "pbs-submit.py 
+cluster: "{{ cookiecutter.profile_name }}/pbs-submit.py 
   --depend \"{dependencies}\"
   -A '{{ cookiecutter.default_account }}'
   -v PATH,LOADEDMODULES,_LMFILES_" 
-cluster-status: "pbs-status.py"
-jobscript: "pbs-jobscript.sh"
+cluster-status: "{{ cookiecutter.profile_name }}/pbs-status.py"
+jobscript: "{{ cookiecutter.profile_name }}/pbs-jobscript.sh"
 
 jobs: 5000
 max-jobs-per-second: 1

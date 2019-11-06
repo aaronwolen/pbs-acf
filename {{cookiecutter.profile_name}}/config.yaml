@@ -1,4 +1,7 @@
-cluster: "pbs-submit.py --depend \"{dependencies}\" -A '{{cookiecutter.default_account}}'"
+cluster: "pbs-submit.py 
+  --depend \"{dependencies}\"
+  -A '{{ cookiecutter.default_account }}'
+  -v PATH,LOADEDMODULES,_LMFILES_" 
 cluster-status: "pbs-status.py"
 jobscript: "pbs-jobscript.sh"
 

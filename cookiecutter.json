@@ -1,4 +1,5 @@
 {
-    "profile_name": "moab",
-    "immediate_submit": false
+    "profile_name": "pbs-acf",
+    "default_account": "",
+    "immediate_submit": true
 }

@@ -18,7 +18,7 @@ A few notes about changes I've made.
 
 ### Template variables
 
-- **profile_name**: Specifies the [account][acf-job-opts] to which the job will be charged. If omitted `qsub` throws a warning 
+- **profile_name**: Specifies the [account][acf-job-opts] to which the job will be charged. If omitted `qsub` throws a warning and uses the default profile associated with your ACF account. This is passed to `qsub -A`.
 
 ## Setup
 

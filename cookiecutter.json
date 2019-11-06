@@ -1,5 +1,5 @@
 {
     "profile_name": "pbs-acf",
     "default_account": "",
-    "immediate_submit": true
+    "immediate_submit": "true"
 }
